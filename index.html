@@ -1,0 +1,595 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>enen | 三角洲解密创始人 - 三角洲辅助与内核内容分享</title>
+  <meta name="description" content="enen，三角洲解密创始人。聚焦三角洲辅助、三角洲解密、enen内核、enen解密与三角洲内核内容，Telegram 频道成员已超20万并持续增长。">
+  <meta name="keywords" content="三角洲辅助,三角洲解密,enen内核,enen解密,三角洲内核,enen辅助">
+  <meta name="author" content="enen">
+  <meta name="robots" content="index,follow,max-image-preview:large">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="enen | 三角洲解密创始人">
+  <meta property="og:description" content="关注三角洲辅助、三角洲解密、enen内核与enen解密，20万+ Telegram 社群持续增长。">
+  <meta property="og:locale" content="zh_CN">
+  <meta property="og:site_name" content="enen Landing Page">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="enen | 三角洲解密创始人">
+  <meta name="twitter:description" content="三角洲辅助、三角洲解密、enen内核与enen辅助内容持续更新。">
+  <link rel="canonical" href="https://enenhz.github.io/">
+  <style>
+    :root {
+      --bg: #020503;
+      --panel: rgba(4, 16, 10, 0.78);
+      --panel-strong: rgba(2, 12, 8, 0.95);
+      --line: rgba(87, 255, 160, 0.24);
+      --text: #ceffd6;
+      --muted: #73c793;
+      --green: #5dff9b;
+      --green-deep: #21c26a;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Consolas", "Courier New", "Microsoft YaHei", monospace;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 15% 10%, rgba(37, 168, 96, 0.22), transparent 35%),
+        radial-gradient(circle at 82% 20%, rgba(71, 245, 145, 0.12), transparent 42%),
+        var(--bg);
+      min-height: 100vh;
+      line-height: 1.6;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 100% 3px;
+      opacity: 0.06;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: 0 auto;
+    }
+
+    .hero {
+      padding: 62px 0 26px;
+      position: relative;
+    }
+
+    .terminal {
+      border: 1px solid var(--line);
+      background: linear-gradient(180deg, rgba(7, 24, 14, 0.88), rgba(1, 9, 6, 0.95));
+      border-radius: 18px;
+      box-shadow: 0 20px 48px rgba(0, 0, 0, 0.55), inset 0 0 30px rgba(70, 255, 145, 0.04);
+      overflow: hidden;
+    }
+
+    .terminal-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 42px;
+      padding: 0 14px;
+      border-bottom: 1px solid var(--line);
+      background: rgba(0, 0, 0, 0.24);
+    }
+
+    .lights {
+      display: flex;
+      gap: 7px;
+    }
+
+    .dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      box-shadow: 0 0 10px currentColor;
+    }
+
+    .dot-red { color: #ff5f57; background: #ff5f57; }
+    .dot-yellow { color: #febc2e; background: #febc2e; }
+    .dot-green { color: #28c840; background: #28c840; }
+
+    .terminal-title {
+      font-size: 12px;
+      color: var(--muted);
+      letter-spacing: 0.04em;
+    }
+
+    .typed-caret {
+      display: inline-block;
+      margin-left: 2px;
+      color: var(--green);
+      animation: blink 0.9s steps(1, end) infinite;
+    }
+
+    @keyframes blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
+
+    .content {
+      padding: clamp(20px, 3vw, 40px);
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 24px;
+    }
+
+    .label {
+      width: fit-content;
+      border: 1px solid var(--line);
+      background: rgba(31, 113, 68, 0.16);
+      color: #8dffba;
+      border-radius: 8px;
+      padding: 6px 10px;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(30px, 5vw, 62px);
+      line-height: 1.1;
+      max-width: 13ch;
+    }
+
+    .name {
+      color: var(--green);
+      text-shadow: 0 0 12px rgba(93, 255, 155, 0.4);
+    }
+
+    .typed-heading {
+      white-space: pre-line;
+    }
+
+    .name-emphasis {
+      color: #c5ffd9;
+      text-shadow:
+        0 0 4px rgba(93, 255, 155, 0.9),
+        0 0 14px rgba(93, 255, 155, 0.7),
+        -1px 0 0 rgba(0, 255, 255, 0.5),
+        1px 0 0 rgba(255, 0, 128, 0.35);
+      letter-spacing: 0.04em;
+      position: relative;
+      animation: glitchPulse 1.8s infinite;
+    }
+
+    @keyframes glitchPulse {
+      0%, 100% { filter: brightness(1); transform: translateX(0); }
+      20% { filter: brightness(1.1); transform: translateX(-0.5px); }
+      21% { transform: translateX(0.6px); }
+      22% { transform: translateX(0); }
+      60% { filter: brightness(1.2); }
+    }
+
+    .lead {
+      margin: 16px 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      font-size: clamp(15px, 1.8vw, 18px);
+    }
+
+    .cta-row {
+      margin-top: 22px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 42px;
+      padding: 0 16px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      letter-spacing: 0.03em;
+      transition: transform 0.18s ease, box-shadow 0.18s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-1px);
+    }
+
+    .btn-primary {
+      background: linear-gradient(180deg, #72ffae, #3dde86);
+      color: #032b16;
+      box-shadow: 0 8px 20px rgba(43, 220, 118, 0.28);
+    }
+
+    .btn-secondary {
+      color: var(--text);
+      background: rgba(16, 57, 34, 0.28);
+    }
+
+    .stats {
+      margin-top: 20px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .stat {
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel-strong);
+      padding: 14px;
+      min-height: 100px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .value {
+      font-size: clamp(22px, 4vw, 38px);
+      line-height: 1;
+      font-weight: 800;
+      margin-bottom: 7px;
+      color: #a6ffc8;
+    }
+
+    .value strong {
+      color: var(--green);
+    }
+
+    .caption {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .story {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: var(--panel);
+      padding: 16px;
+    }
+
+    .story p {
+      margin: 0;
+      font-size: clamp(14px, 1.8vw, 17px);
+      color: #b2f7cb;
+    }
+
+    .thanks {
+      margin-top: 10px;
+      font-size: 15px;
+      color: var(--green);
+      font-weight: 700;
+    }
+
+    .right-panel {
+      border: 1px solid var(--line);
+      border-radius: 12px;
+      background: var(--panel-strong);
+      padding: 14px;
+    }
+
+    .avatar-wrap {
+      position: relative;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      overflow: hidden;
+      background: #001108;
+      aspect-ratio: 1 / 1;
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: saturate(0.9) contrast(1.07);
+    }
+
+    .avatar-wrap::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 65%, rgba(2, 10, 5, 0.55));
+      pointer-events: none;
+    }
+
+    .terminal-lines {
+      margin-top: 12px;
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.18);
+      padding: 12px;
+      font-size: 13px;
+      color: #9fffc2;
+    }
+
+    .terminal-lines p {
+      margin: 0 0 6px;
+    }
+
+    .terminal-lines p:last-child {
+      margin-bottom: 0;
+    }
+
+    footer {
+      padding: 22px 0 36px;
+      text-align: center;
+      color: #4ea76f;
+      font-size: 13px;
+    }
+
+    @media (max-width: 900px) {
+      .container {
+        width: min(1120px, 94%);
+      }
+
+      .content {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        padding: 18px;
+      }
+
+      .right-panel {
+        padding: 12px;
+      }
+
+      .avatar-wrap {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      .stats {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding: 26px 0 16px;
+      }
+
+      .terminal {
+        border-radius: 14px;
+      }
+
+      .terminal-top {
+        height: 38px;
+        padding: 0 10px;
+      }
+
+      .terminal-title {
+        font-size: 10px;
+        max-width: 64%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .content {
+        padding: 14px;
+        gap: 14px;
+      }
+
+      h1 {
+        max-width: none;
+        font-size: clamp(26px, 8vw, 36px);
+        line-height: 1.18;
+      }
+
+      .label {
+        margin-bottom: 10px;
+      }
+
+      .lead {
+        margin-top: 10px;
+        font-size: 14px;
+      }
+
+      .cta-row {
+        margin-top: 14px;
+        flex-direction: column;
+      }
+
+      .btn {
+        width: 100%;
+        min-height: 44px;
+      }
+
+      .stat {
+        min-height: auto;
+      }
+
+      .value {
+        font-size: 28px;
+      }
+
+      .story {
+        padding: 12px;
+      }
+
+      .terminal-lines {
+        font-size: 12px;
+        padding: 10px;
+      }
+
+      footer {
+        padding: 16px 0 28px;
+        font-size: 12px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .container {
+        width: 95%;
+      }
+
+      .dot {
+        width: 9px;
+        height: 9px;
+      }
+
+      .terminal-title {
+        max-width: 58%;
+      }
+
+      .value {
+        font-size: 24px;
+      }
+    }
+  </style>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "enen",
+      "jobTitle": "三角洲解密创始人",
+      "description": "聚焦三角洲辅助、三角洲解密、enen内核、enen解密、三角洲内核、enen辅助内容。",
+      "url": "https://enenhz.github.io/",
+      "sameAs": []
+    }
+  </script>
+</head>
+<body>
+  <main class="container">
+    <section class="hero">
+      <div class="terminal">
+        <div class="terminal-top">
+          <div class="lights">
+            <span class="dot dot-red"></span>
+            <span class="dot dot-yellow"></span>
+            <span class="dot dot-green"></span>
+          </div>
+          <div class="terminal-title">
+            <span id="typedPrompt" data-text="enen@delta:~"></span><span class="typed-caret">_</span> / channel-status
+          </div>
+        </div>
+        <div class="content">
+          <div>
+            <div class="label">[FOUNDER PROFILE]</div>
+            <h1 class="name typed-heading" id="typedHeading" data-text="我是 enen&#10;三角洲解密创始人"></h1>
+            <p class="lead">我平时主要在做三角洲相关的解密和技术分享，也会持续更新一些实用内容。频道现在有 20 万+ 成员，感谢大家一直以来的关注和支持。</p>
+
+            <div class="cta-row">
+              <a class="btn btn-primary" href="#" aria-label="加入 Telegram">JOIN TELEGRAM</a>
+              <a class="btn btn-secondary" href="#" aria-label="了解更多">READ LOG</a>
+            </div>
+
+            <div class="stats">
+              <article class="stat">
+                <div class="value"><strong>200,000+</strong></div>
+                <div class="caption">Telegram 频道成员</div>
+              </article>
+              <article class="stat">
+                <div class="value">ONLINE</div>
+                <div class="caption">社群规模持续上升</div>
+              </article>
+              <article class="stat">
+                <div class="value">24/7</div>
+                <div class="caption">持续投入与建设</div>
+              </article>
+            </div>
+
+            <div class="story">
+              <p>这里会持续更新我在三角洲方向上的实战内容和阶段进展。</p>
+              <p class="thanks">谢谢大家的支持，我会继续努力。</p>
+            </div>
+          </div>
+          <aside class="right-panel">
+            <div class="avatar-wrap">
+              <img src="./photo_2021-09-26_23-38-14.jpg" alt="enen 头像">
+            </div>
+            <div class="terminal-lines">
+              <p>&gt; founder: enen</p>
+              <p>&gt; project: 三角洲解密</p>
+              <p>&gt; channel_members: 200000+</p>
+              <p>&gt; status: growing...</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© <span id="year"></span> enen · 三角洲解密</footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    function typeTextById(id, delay, speed, options) {
+      var el = document.getElementById(id);
+      if (!el) return;
+      var full = el.getAttribute("data-text") || "";
+      var i = 0;
+      el.textContent = "";
+      var opts = options || {};
+      var highlightWord = opts.highlightWord || "";
+      var highlightClass = opts.highlightClass || "";
+
+      function render(text) {
+        if (highlightWord && highlightClass) {
+          var safeText = text;
+          var safeWord = highlightWord;
+          var fullWordRegex = new RegExp(safeWord, "g");
+
+          if (fullWordRegex.test(safeText)) {
+            el.innerHTML = safeText.replace(
+              fullWordRegex,
+              "<span class=\"" + highlightClass + "\">" + safeWord + "</span>"
+            );
+            return;
+          }
+
+          var bestPrefix = "";
+          for (var len = safeWord.length - 1; len >= 1; len -= 1) {
+            var prefix = safeWord.slice(0, len);
+            if (safeText.lastIndexOf(prefix) !== -1) {
+              bestPrefix = prefix;
+              break;
+            }
+          }
+
+          if (bestPrefix) {
+            var pos = safeText.lastIndexOf(bestPrefix);
+            var before = safeText.slice(0, pos);
+            var after = safeText.slice(pos + bestPrefix.length);
+            el.innerHTML = before + "<span class=\"" + highlightClass + "\">" + bestPrefix + "</span>" + after;
+            return;
+          }
+
+          el.textContent = safeText;
+          return;
+        }
+        el.textContent = text;
+      }
+
+      function tick() {
+        if (i <= full.length) {
+          render(full.slice(0, i));
+          i += 1;
+          setTimeout(tick, speed);
+        }
+      }
+
+      setTimeout(tick, delay);
+    }
+
+    typeTextById("typedPrompt", 260, 110);
+    typeTextById("typedHeading", 680, 95, {
+      highlightWord: "enen",
+      highlightClass: "name-emphasis"
+    });
+  </script>
+</body>
+</html>
